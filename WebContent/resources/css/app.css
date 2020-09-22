@@ -1,0 +1,60 @@
+body {
+    background-color: #eaeaea;    
+}
+
+#header {
+	background-color: #d7d7d7;
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	border: 1px solid #ddd;	
+	text-align: center;
+}
+
+#records_table {
+	
+	font-family: "arial";
+	font-size: .85em;
+	overflow-x:auto;
+}
+#menu {
+    width: 100%;
+    height: 50px;
+    font-size: 1em;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-weight:normal;
+    text-align: center;   
+    background-color: #d7d7d7;
+    border-radius: 8px;
+    
+}
+#menu ul {
+    height: auto;
+    padding: 4px 0px;
+    margin: 0px;
+}
+#menu li {
+display: inline;
+padding: 4px;
+
+}
+
+#menu a {
+    text-decoration: none;   
+}
+
+#menu a:hover {
+    color: #F90;
+}
+
+#menu strong {
+   font-size: 1.5em;
+    font-family: Bookman;
+    font-weight: bold;
+    float: left;
+}
+#menu #date {
+	float:right;
+}
