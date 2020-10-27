@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 //import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session; 
@@ -29,8 +30,8 @@ public class StudentDAOImpl implements StudentDAO {
 			log.info("The object is added");
 		} catch(Exception e) {			
 			log.fatal("Exception is " + e.toString());
-		}
-		
+			throw e;
+		}		
 	}
 
 	@Override
@@ -45,8 +46,7 @@ public class StudentDAOImpl implements StudentDAO {
 		} catch(Exception e) {
 			//System.out.println("in EmployeeDAOImpl failure "+e.toString());
 			log.fatal("Exception is " + e.toString());
-		}
-		
+		}		
 	}
 
 	@Override

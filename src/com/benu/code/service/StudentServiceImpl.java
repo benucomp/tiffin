@@ -24,13 +24,12 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	public void add(Student obj) {
-
 		log.debug("In Add method with object " + obj);
 		try {			
 			studentDAO.add(obj);			
 			log.info("Add object is successful");
 		}catch (Exception e) {
-			log.fatal("Exception is " + e.toString());			
+			log.fatal("Add Object FAILED with Exception " + e.toString());			
 		}        
 	}
 
