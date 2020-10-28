@@ -1,11 +1,6 @@
 package com.benu.code.dao;
 
 import java.util.List;
-
-
-
-
-//import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session; 
 import org.apache.commons.logging.Log;
@@ -18,18 +13,19 @@ import com.benu.code.entity.Student;
 public class StudentDAOImpl implements StudentDAO {
 
 	private static Log log = LogFactory.getLog(StudentDAOImpl.class);
-	
+
 	@Override
 	public void add(Student obj) {
 		log.debug("Entering add method with data " + obj);
 		try {			
+			//GeneralUtils.getValue();
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			session.save(obj);
 			session.getTransaction().commit();			
 			log.info("The object is added");
-		} catch(Exception e) {			
-			log.fatal("Exception is " + e.toString());
+		} catch(Exception e) {	
+			log.fatal("Exception is " + e.toString());			
 			throw e;
 		}		
 	}
@@ -61,10 +57,10 @@ public class StudentDAOImpl implements StudentDAO {
 			query.addEntity(Student.class);
 			rows = query.list();
 			session.getTransaction().commit();
-			
+
 			log.info("The distributor data is retrieved " + rows);
 		} catch(Exception e) {
-			
+
 			log.fatal("Exception is " + e.toString());
 			rows = null;
 		}

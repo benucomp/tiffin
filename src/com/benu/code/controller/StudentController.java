@@ -9,6 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,16 +34,27 @@ public class StudentController {
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Student add(Student obj) {	
+	public Response add(Student obj) {	
 		
 		log.debug("In Add method with object "+obj);
 		try {
 			service.add(obj);
 			log.info("Object added");
+			return Response
+				      .ok()
+				      .type(MediaType.APPLICATION_JSON)
+				      .entity(obj)
+				      .build();
+			
 		} catch (Exception e) {
 			log.fatal("Exception is " + e.toString());
+			return Response
+				      .status(Response.Status.NOT_FOUND)
+				      .type(MediaType.APPLICATION_JSON)
+				      .entity(obj)
+				      .build();
 		}		
-		return obj;
+		
 	}
 
 	@GET

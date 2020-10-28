@@ -1,6 +1,16 @@
 package com.benu.code.service;
 
+import java.io.IOException;
 import java.util.List;
+
+
+
+
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import com.benu.code.dao.StudentDAO;
 import com.benu.code.entity.Student;
 import com.benu.code.service.StudentService;
@@ -27,9 +37,11 @@ public class StudentServiceImpl implements StudentService{
 		log.debug("In Add method with object " + obj);
 		try {			
 			studentDAO.add(obj);			
-			log.info("Add object is successful");
+			log.fatal("Add object is successful");
+			
 		}catch (Exception e) {
-			log.fatal("Add Object FAILED with Exception " + e.toString());			
+			log.fatal("Add Object FAILED with Exception " + e.toString());
+			throw e;		
 		}        
 	}
 

@@ -1,6 +1,10 @@
 package com.benu.code.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.ws.rs.core.Response;
+
 import com.benu.code.entity.Student;
 
 public interface StudentService {
