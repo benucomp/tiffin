@@ -30,7 +30,7 @@ public class PoweredByFilter implements ContainerRequestFilter{
 	@Context
 	private ResourceInfo resourceInfo;
 
-	public static final String AUTH_HEADER_KEY = "AUTH";
+	public static final String AUTH_HEADER_KEY = "Authorization";
 	public static final String AUTH_HEADER_PREFIX = "Basic";
 	public static final String SECURED_URL_PREFIX = "add";
 
@@ -38,6 +38,10 @@ public class PoweredByFilter implements ContainerRequestFilter{
 	public void filter(ContainerRequestContext req) throws IOException {
 
 		Method method = resourceInfo.getResourceMethod();
+		
+		System.out.println("Method is " + method.getName());
+		
+		
 		//Access allowed for all
 		if(! method.isAnnotationPresent(PermitAll.class)) {
 
@@ -105,13 +109,15 @@ public class PoweredByFilter implements ContainerRequestFilter{
 							
 							//Is user valid?
 							if( ! isUserAllowed(username, password, rolesSet))
-							{								
+							{		
+								
 								Response unauthorizedStatus = Response
 										.status(Response.Status.UNAUTHORIZED)
 										.entity("User can not access the resource")
 										.build();
 								req.abortWith(unauthorizedStatus);
-							}							
+							}	
+							System.out.println("Response is sent as the user is allowed");
 						}
 					}
 				}
@@ -140,6 +146,7 @@ public class PoweredByFilter implements ContainerRequestFilter{
 				isAllowed = true;
 			}
 		}
+		System.out.println("Return is " + isAllowed);
 		return isAllowed;
 	}
 }
